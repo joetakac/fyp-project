@@ -1,0 +1,7 @@
+body {
+  width: 600px;
+  height: 200px;
+}
+nav {
+  display: flex;
+}

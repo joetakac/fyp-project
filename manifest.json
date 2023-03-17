@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "WCAG Accessibility Tool",
+  "description": "Add the reading time to Chrome Extension documentation articles",
+  "version": "1.0",
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "js": ["js/service-worker.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
