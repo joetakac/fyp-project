@@ -11,11 +11,11 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting","tabs"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "js": ["js/service-worker.js"],
+      "js": ["background.js"],
       "matches": ["<all_urls>"]
     }
   ]
