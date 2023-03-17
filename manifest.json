@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "WCAG Accessibility Tool",
-  "description": "Add the reading time to Chrome Extension documentation articles",
+  "description": "Accessibility Checker",
   "version": "1.0",
   "icons": {
     "16": "img/icon16.png",
