@@ -6,28 +6,110 @@
     <title>Navbar Example</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar bg-dark-subtle">
       <div class="container-fluid d-flex justify-content-between">
         <a class="navbar-brand" href="popup.html">
-          <img src="img/icon128.png" alt="Your Logo" > Accessibility Tool
+          <img src="img/icon128.png" alt="Your Logo" />
+          Accessibility Tool
         </a>
-        <div class="d-flex">
-          <a class="nav-link btn mx-2" id="help" href="#"><img src="img/help.png" alt="Help" height="48"></a>
-          <a class="nav-link btn mx-2" id="config" href="#"><img src="img/config.png" alt="Report Configuration" height="48"></a>
-          <a class="nav-link btn mx-2" id="settings" href="#"><img src="img/settings.png" alt="Settings" height="48"></a>
-        </div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#config">
+              <img src="/img/config.png" alt="report config" height="48" />
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#help">
+              <img src="/img/help.png" alt="help" height="48" />
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
-    
-<!-- Body Content -->
-  </body>
-  <div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-primary btn-lg">Generate Report</button>
-  </div>
 
+    <!-- Popup Content -->
+    <div class="tab-content">
+      <!-- HOME -->
+      <div id="popup" class="tab-pane fade show active">
+        <div class="d-flex justify-content-center mt-4">
+          <button class="btn btn-primary btn-lg" id="report" alt="Generate Report">Generate Report</button>
+        </div>
+      </div>
+
+      <!-- REPORT CONFIG -->
+      <div id="config" class="tab-pane fade">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-4">
+            <li class="breadcrumb-item"><a href="#popup">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Report Configuration</li>
+          </ol>
+        </nav>
+        <!-- Title -->
+        <h1 class="text-center fw-bold text-decoration-underline">Report Configuration</h1>
+
+        <!-- Checkboxes Group 1 -->
+        <div class="container my-4">
+          <h2>Checkboxes Group 1</h2>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox1" />
+            <label class="form-check-label" for="checkbox1">Checkbox 1</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox2" />
+            <label class="form-check-label" for="checkbox2">Checkbox 2</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox3" />
+            <label class="form-check-label" for="checkbox3">Checkbox 3</label>
+          </div>
+        </div>
+
+        <!-- Checkboxes Group 2 -->
+        <div class="container my-4">
+          <h2>Checkboxes Group 2</h2>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox4" />
+            <label class="form-check-label" for="checkbox4">Checkbox 4</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox5" />
+            <label class="form-check-label" for="checkbox5">Checkbox 5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox6" />
+            <label class="form-check-label" for="checkbox6">Checkbox 6</label>
+          </div>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div class="container my-4">
+          <h2>Radio Buttons</h2>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radios" id="radio1" checked />
+            <label class="form-check-label" for="radio1">Radio Button 1</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radios" id="radio2" />
+            <label class="form-check-label" for="radio2">Radio Button 2</label>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button class="btn btn-primary my-4">Submit</button>
+        </div>
+      </div>
+
+      <!-- HELP SECTION -->
+      <div id="help" class="tab-pane fade">
+        <p>help</p>
+      </div>
+    </div>
   </body>
-  <script src="./popup.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="popup.js"></script>
 </html>
