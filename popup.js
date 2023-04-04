@@ -8,12 +8,23 @@ $(function () {
   });
 });
 
-$(function() {
+$(function () {
   // When the "Home" breadcrumb is clicked
-  $(document).on('click', 'a[href="#popup"]', function(e) {
+  $(document).on("click", 'a[href="#popup"]', function (e) {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");
     $(".tab-pane").removeClass("show active");
     $($(this).attr("href")).addClass("show active");
+  });
+});
+
+$(function () {
+  // When the "Back" button is clicked on the help page
+  $(document).on("click", "#back", function (e) {
+    $(".nav-link").removeClass("active");
+    $(".tab-pane").removeClass("show active");
+    var popup = $("#popup");
+    popup.addClass("show active");
+    $(popup.attr("href")).addClass("show active");
   });
 });
