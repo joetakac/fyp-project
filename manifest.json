@@ -15,8 +15,11 @@
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "js": ["background.js"],
+      "js": ["./content-scripts/config.js", "./content-scripts/report.js","/node_modules/jquery/dist/jquery.min.js","popup.js"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }

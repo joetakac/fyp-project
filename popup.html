@@ -6,6 +6,7 @@
     <title>Navbar Example</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -14,20 +15,40 @@
         <a class="navbar-brand" href="popup.html">
           <img src="img/icon128.png" alt="Your Logo" > Accessibility Tool
         </a>
-        <div class="d-flex">
-          <a class="nav-link btn mx-2" id="help" href="#"><img src="img/help.png" alt="Help" height="48"></a>
-          <a class="nav-link btn mx-2" id="config" href="#"><img src="img/config.png" alt="Report Configuration" height="48"></a>
-          <a class="nav-link btn mx-2" id="settings" href="#"><img src="img/settings.png" alt="Settings" height="48"></a>
-        </div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#config"><img src="/img/config.png" alt="report config" height="48"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#help"><img src="/img/help.png" alt="help" height="48"></a>
+          </li>
+        </ul>
       </div>
     </nav>
-    
-<!-- Body Content -->
-  </body>
-  <div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-primary btn-lg">Generate Report</button>
-  </div>
+
+    <!-- Popup Content -->
+    <div class="tab-content">
+      
+      <div id="popup" class="tab-pane fade show active">
+        <div class="d-flex justify-content-center mt-4">
+          <button class="btn btn-primary btn-lg" id="report" alt="Generate Report">Generate Report</button>
+        </div>
+      </div>
+
+      <div id="config" class="tab-pane fade">
+        <p>poo</p>
+      </div>
+
+      <div id="help" class="tab-pane fade">
+        <p>wee</p>
+      </div>
+
+      <div id="settings" class="tab-pane fade">
+        <p>fart</p>
+      </div>
+    </div>
 
   </body>
-  <script src="./popup.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="popup.js"></script>
 </html>
