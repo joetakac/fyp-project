@@ -11,15 +11,16 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting","tabs"],
+  "options_page": "options.html",
+  "permissions": ["activeTab", "scripting", "tabs", "storage"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "js": ["./content-scripts/config.js", "./content-scripts/report.js","/node_modules/jquery/dist/jquery.min.js","popup.js"],
+      "js": ["./content-scripts/config.js", "./content-scripts/report.js", "/node_modules/jquery/dist/jquery.min.js", "popup.js"],
       "matches": ["<all_urls>"]
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "service_worker.js"
   }
 }

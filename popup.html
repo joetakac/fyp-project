@@ -27,6 +27,11 @@
               <img src="/img/help.png" alt="help" height="48" />
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#options">
+              <img src="/img/settings.png" alt="help" height="48" />
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -141,6 +146,61 @@
         <!-- Back Button -->
         <div class="text-center">
           <button id="back" class="btn btn-primary my-4">Back</button>
+        </div>
+      </div>
+
+      <!-- OPTIONS -->
+      <div id="options" class="tab-pane fade">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-4">
+            <li class="breadcrumb-item"><a href="#popup">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Report Configuration</li>
+          </ol>
+        </nav>
+
+        <!-- Title -->
+        <h1 class="text-center fw-bold text-decoration-underline">Application Settings</h1>
+
+        <div class="m-4">
+          <!-- Radio buttons section -->
+          <section class="my-4">
+            <h2 class="fw-bold">Select a report type</h2>
+            <div class="form-check my-3">
+              <input class="form-check-input" type="radio" name="report-type" id="radio-1" checked />
+              <label class="form-check-label" for="radio-1">Report type 1</label>
+            </div>
+            <div class="form-check my-3">
+              <input class="form-check-input" type="radio" name="report-type" id="radio-2" />
+              <label class="form-check-label" for="radio-2">Report type 2</label>
+            </div>
+          </section>
+
+          <!-- Slider section -->
+          <section class="my-4">
+            <h2 class="fw-bold">Change Text Size</h2>
+            <label for="text-size-slider" class="form-label">
+              Text Size:
+              <span id="text-size">16</span>
+              px
+            </label>
+            <input type="range" class="form-range" min="12" max="24" step="1" id="text-size-slider" />
+          </section>
+
+          <!-- Example box section -->
+          <section class="my-4">
+            <h2 class="fw-bold">Example Box</h2>
+            <div class="card bg-light my-3" style="font-size: 16px">
+              <div class="card-body">
+                <h5 class="card-title">Example Text</h5>
+                <p class="card-text">This is an example of how the text will look like with the selected text size.</p>
+              </div>
+            </div>
+          </section>
+          <!-- Apply Button -->
+          <div class="text-center">
+            <button id="back" class="btn btn-primary my-4">Apply</button>
+          </div>
         </div>
       </div>
     </div>
