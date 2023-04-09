@@ -54,7 +54,10 @@
 
         <!-- Categories -->
         <div class="container my-4">
-          <h2>Categories</h2>
+          <h2>
+            Categories
+            <a><img src="img/info.png" class="info-categories" height="20" /></a>
+          </h2>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="ariacheck" />
             <label class="form-check-label" for="ariacheck">ARIA</label>
@@ -111,14 +114,18 @@
 
         <!-- WCAG Compliance Levels -->
         <div class="container my-4">
-          <h2>WCAG Compliance Levels</h2>
+          <h2>
+            WCAG Compliance Levels
+            <a href="https://www.w3.org/WAI/WCAG2AA-Conformance" target="_blank"><img src="img/info.png" class="info-img wcag" height="20" /></a>
+          </h2>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="wcag2acheck" />
             <label class="form-check-label" for="wcag2acheck">2.0 A</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="wcag2aacheck" />
-            <label class="form-check-label" for="wcag2aacheck">2.0 AA</label>
+            <input class="form-check-input" type="checkbox" value <div class="form-check" />
+            <input class="form-check-input" type="checkbox" value="" id="wcag2aaacheck" />
+            <label class="form-check-label" for="wcag2aaacheck">2.0 AAA</label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="wcag21acheck" />
@@ -126,7 +133,11 @@
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="wcag21aacheck" />
-            <label class="form-check-label" for="wcagAAAcheck">2.1 AA</label>
+            <label class="form-check-label" for="wcag21aacheck">2.1 AA</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="wcag22aacheck" />
+            <label class="form-check-label" for="wcag22aacheck">2.2 AA</label>
           </div>
         </div>
 
@@ -144,6 +155,7 @@
         </div>
         <!-- Submit Button -->
         <div class="text-center">
+          <button id="back" class="btn btn-primary my-4">Back</button>
           <button id="reportconfig" class="btn btn-primary my-4">Apply</button>
         </div>
       </div>
@@ -163,24 +175,196 @@
         <div class="m-4">
           <!-- Paragraph 1 -->
           <h2>Getting Started</h2>
-          <p>
-            To get started with the Accessibility Tool, simply navigate to the Home tab and click the "Generate Report" button. This will scan the current page
-            for accessibility issues and generate a report for you to review.
-          </p>
+          <p>To get started with the Accessibility Tool, simply navigate to the Home tab and click the "Generate Report" button. This will scan the current page for accessibility issues and generate a report for you to review.</p>
 
           <!-- Paragraph 2 -->
-          <h2>Customizing Your Report</h2>
-          <p>
-            If you want to customize your report, click on the Report Configuration tab. Here, you can select which accessibility checks you want to perform and
-            adjust other settings to meet your needs.
-          </p>
+          <div id="configHelp">
+            <h2>Configuring Your Report</h2>
+            <p>If you want to customize your report, click on the Report Configuration tab. Here, you can select which accessibility checks you want to perform and adjust other settings to meet your needs.</p>
+
+            <!-- Accordion -->
+            <div class="accordion m-4" id="config-accordion">
+              <!-- Accordion item 1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">ARIA</button>
+                </h2>
+                <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p><i>Accessible Rich Internet Applications (ARIA) is a set of roles and attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities.</i></p>
+                    <pre class="bg-light">
+                      <code>
+                    &lt;div class="progress"&gt;
+                      &lt;div id="percent-loaded" class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                      </code>
+                    </pre>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">Click here to learn more...</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">Colour</button>
+                </h2>
+                <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 2:</p>
+                    <pre><code>// Example code snippet 2</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">Forms</button>
+                </h2>
+                <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-4">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">Keyboard</button>
+                </h2>
+                <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-5">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">Language</button>
+                </h2>
+                <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 6 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-6">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">Name-Role-Value</button>
+                </h2>
+                <div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 7 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-7">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">Parsing</button>
+                </h2>
+                <div id="collapse-7" class="accordion-collapse collapse" aria-labelledby="heading-7" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 8 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-8">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-8" aria-expanded="false" aria-controls="collapse-8">Semantics</button>
+                </h2>
+                <div id="collapse-8" class="accordion-collapse collapse" aria-labelledby="heading-8" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 9 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-9">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-9" aria-expanded="false" aria-controls="collapse-9">Sensory and Visual Cues</button>
+                </h2>
+                <div id="collapse-9" class="accordion-collapse collapse" aria-labelledby="heading-9" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 10 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-10">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-10" aria-expanded="false" aria-controls="collapse-10">Structure</button>
+                </h2>
+                <div id="collapse-10" class="accordion-collapse collapse" aria-labelledby="heading-10" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 11 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-11">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-11">Tables</button>
+                </h2>
+                <div id="collapse-11" class="accordion-collapse collapse" aria-labelledby="heading-11" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 12 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-12">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-12">Text Alternatives</button>
+                </h2>
+                <div id="collapse-12" class="accordion-collapse collapse" aria-labelledby="heading-12" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 13 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-13">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-13" aria-expanded="false" aria-controls="collapse-13">Time and Media</button>
+                </h2>
+                <div id="collapse-13" class="accordion-collapse collapse" aria-labelledby="heading-13" data-bs-parent="#config-accordion">
+                  <div class="accordion-body">
+                    <p>Here is some information about Code Snippet 3:</p>
+                    <pre><code>// Example code snippet 3</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Paragraph 3 -->
           <h2>Interpreting Your Results</h2>
-          <p>
-            Once you've generated your report, take the time to review each issue and its severity rating. Some issues may be easy to fix, while others may
-            require more time and effort. Consider consulting with an accessibility expert if you're unsure how to fix a particular issue.
-          </p>
+          <p>Once you've generated your report, take the time to review each issue and its severity rating. Some issues may be easy to fix, while others may require more time and effort. Consider consulting with an accessibility expert if you're unsure how to fix a particular issue.</p>
         </div>
         <!-- Back Button -->
         <div class="text-center">

@@ -1,16 +1,26 @@
 chrome.storage.local.get("axeConfig", function (data) {
   const config = data.axeConfig;
+  console.log(data.axeConfig);
 
-  // Step 2: Add a script tag to your content script that references the Axe-core library.
+  // Inject the axe-core script into the page
   const script = document.createElement("script");
   script.src = chrome.runtime.getURL("/node_modules/axe-core/axe.min.js");
-  script.onload = () => {
-    // Step 3: Use the `axe.run` function to run an accessibility scan on the current page.
-    axe.run(document, config, (err, results) => {
-      if (err) throw err;
 
-      // Step 4: Handle the results of the scan appropriately.
-      console.log(results);
+  const options = {
+    runOnly: {
+      type: "tag",
+      values: config,
+    },
+  };
+  script.onload = () => {
+    // Call the axe.run method with the options object as an argument
+    axe.run(document, options, (err, results) => {
+      // Handle the axe.run results here
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(results);
+      }
     });
   };
   document.body.appendChild(script);
