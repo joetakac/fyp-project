@@ -35,7 +35,6 @@ $('.info-categories').on('click', function () {
   var help = $("#help");
   help.addClass("show active");
   $(help.attr("href")).addClass("show active");
-  $('#confighelp').trigger('focus');
 });
 
 // Event listener for the submit button
@@ -75,6 +74,7 @@ $("#reportconfig").on("click", function () {
     }
   }
 
+
   // loop through the userOptions object and add true keys to the options array
   for (var key in userOptions) {
     if (userOptions.hasOwnProperty(key) && userOptions[key]) {
@@ -90,10 +90,27 @@ $("#reportconfig").on("click", function () {
   console.log(options);
 });
 
-$("#report").on("click", async function () {
+$("#reportbutton").on("click", async function () {
   let queryOptions = { active: true, lastFocusedWindow: true };
   // `tab` will either be a `tabs.Tab` instance or `undefined`.
   let [tab] = await chrome.tabs.query(queryOptions);
 
   chrome.runtime.sendMessage({ action: "runAxe", tab: tab }); // Send a message to the background script to run axe on the current page
+
+  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) { // Listen for report response
+    if(request.action === "sendResults") {
+      var results = request.results;
+      chrome.storage.local.set({ axeResults: results }); // Save the results object to chrome storage
+
+      //hide the home page and show the report page
+      $(".nav-link").removeClass("active");
+      $(".tab-pane").removeClass("show active");
+      var report = $("#report");
+      report.addClass("show active");
+
+      //inject content into the report page
+
+    
+    }
+  });
 });

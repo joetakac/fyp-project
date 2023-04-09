@@ -20,6 +20,7 @@ chrome.storage.local.get("axeConfig", function (data) {
         console.error(err);
       } else {
         console.log(results);
+        chrome.runtime.sendMessage({ action: "sendResults", results: results }); 
       }
     });
   };

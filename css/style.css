@@ -38,3 +38,14 @@ nav {
 .form-check-label {
   user-select: none;
 }
+
+.info-categories:hover {
+  cursor: pointer;
+}
+
+[ id^="heading-passes-" ] .accordion-button { 
+  color:green;
+}
+[ id^="heading-fails-" ] .accordion-button {
+  color:red;
+}
