@@ -11,15 +11,21 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting","tabs"],
+  "permissions": ["activeTab", "scripting","tabs","storage"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "js": ["./content-scripts/config.js", "./content-scripts/report.js","/node_modules/jquery/dist/jquery.min.js","popup.js"],
+      "js": ["/node_modules/jquery/dist/jquery.min.js","/content-scripts/axe.js","/node_modules/axe-core/axe.min.js"],
       "matches": ["<all_urls>"]
     }
   ],
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["/node_modules/axe-core/axe.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
