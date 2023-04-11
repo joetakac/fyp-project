@@ -29,7 +29,7 @@ $(function () {
   });
 });
 
-$('.info-categories').on('click', function () {
+$(".info-categories").on("click", function () {
   $(".nav-link").removeClass("active");
   $(".tab-pane").removeClass("show active");
   var help = $("#help");
@@ -39,6 +39,8 @@ $('.info-categories').on('click', function () {
 
 // Event listener for the submit button
 $("#reportconfig").on("click", function () {
+  console.log("report config button clicked");
+
   // Get the values of the checkboxes and radio buttons
   var userCatOptions = {
     aria: $("#ariacheck").is(":checked"),
@@ -46,14 +48,14 @@ $("#reportconfig").on("click", function () {
     forms: $("#formcheck").is(":checked"),
     keyboard: $("#keyboardcheck").is(":checked"),
     language: $("#langcheck").is(":checked"),
-    namerole: $("#namerolecheck").is(":checked"),
+    name_role_value: $("#namerolecheck").is(":checked"),
     parsing: $("#parsecheck").is(":checked"),
     semantics: $("#semcheck").is(":checked"),
-    sensory_visual: $("#snvcheck").is(":checked"),
+    sensory_and_visual_cues: $("#snvcheck").is(":checked"),
     structure: $("#structcheck").is(":checked"),
     tables: $("#tablecheck").is(":checked"),
     text_alternatives: $("#altcheck").is(":checked"),
-    time_media: $("#tnmcheck").is(":checked"),
+    time_and_media: $("#tnmcheck").is(":checked"),
   };
 
   var userOptions = {
@@ -74,19 +76,16 @@ $("#reportconfig").on("click", function () {
     }
   }
 
-
   // loop through the userOptions object and add true keys to the options array
   for (var key in userOptions) {
     if (userOptions.hasOwnProperty(key) && userOptions[key]) {
       options.push(key);
     }
   }
-  
 
   // // Get the text value of the selected radio button label
   // var device = $("input[name='device']:checked + label").text();
-
-  chrome.storage.local.set({ axeConfig: options }); // Save the options object to chrome storage
+  if (chrome.storage.local.get("axeConfig")) chrome.storage.local.set({ axeConfig: options }); // Save the options object to chrome storage
   console.log(options);
 });
 
@@ -97,9 +96,10 @@ $("#reportbutton").on("click", async function () {
 
   chrome.runtime.sendMessage({ action: "runAxe", tab: tab }); // Send a message to the background script to run axe on the current page
 
-  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) { // Listen for report response
-    if(request.action === "sendResults") {
-      var results = request.results;
+  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    // Listen for report response
+    if (request.action === "sendResults") {
+      var results = request.report;
       chrome.storage.local.set({ axeResults: results }); // Save the results object to chrome storage
 
       //hide the home page and show the report page
@@ -108,9 +108,81 @@ $("#reportbutton").on("click", async function () {
       var report = $("#report");
       report.addClass("show active");
 
-      //inject content into the report page
-
-    
+      // Print the results to the page
+      printARIAResults(results);
     }
+    return true;
   });
 });
+
+function printARIAResults(results) {
+  var passes = results.passes;
+  var fails = results.violations;
+  var ariaPasses = $(".accordion-body.aria-passes");
+  var ariaFails = $(".accordion-body.aria-fails");
+
+  if (passes.length === 0) {
+    ariaPasses.append("<div class='pass'><p>ARIA passes were not found.</p></div>");
+  }
+
+  if (fails.length === 0) {
+    ariaFails.append("<div class='fail'><p>ARIA violations were not found.</p></div>");
+  }
+
+  // Print passes to the relevant div
+  passes.forEach(function (pass) {
+    if (pass.tags.includes("cat.aria")) {
+      var description = pass.description;
+      var nodes = pass.nodes;
+      var html = "";
+
+      nodes.forEach(function (node) {
+        html += "<p>" + node.html + "</p>";
+      });
+
+      var card = $("<div>", { class: "card mb-3" });
+      var cardBody = $("<div>", { class: "card-body" });
+      var cardTitle = $("<h5>", { class: "card-title" }).text(description);
+      var code = $("<pre>", { class: "card-text mb-0" }).html(html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+
+      cardBody.append(cardTitle, code);
+      card.append(cardBody);
+      ariaPasses.append(card);
+    } else {
+      ariaPasses.append("<p>ARIA elements were not found.</p>");
+    }
+  });
+
+  // Print failures to the relevant div
+  fails.forEach(function (fail) {
+    if (fail.tags.includes("cat.aria")) {
+      var description = fail.description;
+      var nodes = fail.nodes;
+      var html = "";
+
+      nodes.forEach(function (node) {
+        html += "<p>" + node.html + "</p>";
+      });
+
+      ariaFails.append("<div class='fail'><h4>" + description + "</h4></div>");
+
+      var htmlSnippets = html.split("<p>").filter(function (snippet) {
+        return snippet !== "";
+      });
+
+      htmlSnippets.forEach(function (snippet) {
+        var card = $("<div>", { class: "card mb-3" });
+        var cardBody = $("<div>", { class: "card-body" });
+        var cardTitle = $("<h5>", { class: "card-title" }).text("Failing element");
+        var code = $("<pre>", { class: "card-text mb-0" }).html(snippet.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+        var help = $("<p>", { class: "help" }).text(fail.help);
+
+        cardBody.append(cardTitle, code, help);
+        card.append(cardBody);
+        ariaFails.append(card);
+      });
+    } else {
+      ariaFails.append("<p>ARIA violations were not found.</p>");
+    }
+  });
+}

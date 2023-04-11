@@ -49,3 +49,24 @@ nav {
 [ id^="heading-fails-" ] .accordion-button {
   color:red;
 }
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 0;
+}
+
+.help {
+  font-size: 14px;
+  color: #777;
+  margin-top: 10px;
+}
