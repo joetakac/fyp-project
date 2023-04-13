@@ -57,7 +57,7 @@
         <h1 class="text-center fw-bold text-decoration-underline">Report Configuration</h1>
 
         <!-- Categories -->
-        <div class="container my-4">
+        <div class="container my-4 categories">
           <h2>
             Categories
             <a><img src="img/info.png" class="info-categories" height="20" /></a>
@@ -114,10 +114,13 @@
             <input class="form-check-input" type="checkbox" value="" id="tnmcheck" />
             <label class="form-check-label" for="tnmcheck">Time and Media</label>
           </div>
+          <div class="d-flex justify-content-start align-items-center mt-3">
+            <button type="button" class="btn btn-primary me-3 active" id="selectAllCat">Select All</button>
+          </div>
         </div>
 
         <!-- WCAG Compliance Levels -->
-        <div class="container my-4">
+        <div class="container my-4 WCAG">
           <h2>
             WCAG Compliance Levels
             <a href="https://www.w3.org/WAI/WCAG2AA-Conformance" target="_blank"><img src="img/info.png" class="info-img wcag" height="20" /></a>
@@ -142,6 +145,9 @@
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="wcag22aacheck" />
             <label class="form-check-label" for="wcag22aacheck">2.2 AA</label>
+          </div>
+          <div class="d-flex justify-content-start align-items-center mt-3">
+            <button type="button" class="btn btn-primary me-3 active" id="selectAllWCAG">Select All</button>
           </div>
         </div>
 
@@ -386,6 +392,9 @@
           </ol>
         </nav>
 
+        <!-- Title -->
+        <h1 id="reporttitle" class="text-center fw-bold text-decoration-underline"></h1>
+
         <!-- Accordion -->
         <div class="accordion m-4" id="report-accordion">
           <!-- Accordion item 14 -->
@@ -402,7 +411,8 @@
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-passes-1" aria-expanded="false" aria-controls="collapse-passes-1">Passes</button>
                     </h2>
                     <div id="collapse-passes-1" class="accordion-collapse collapse" aria-labelledby="heading-passes-1" data-bs-parent="#passes-accordion-1">
-                      <div class="accordion-body aria-passes"></div>
+                      <div class="accordion-body aria-passes">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -413,7 +423,8 @@
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-fails-1" aria-expanded="false" aria-controls="collapse-fails-1">Fails</button>
                     </h2>
                     <div id="collapse-fails-1" class="accordion-collapse collapse" aria-labelledby="heading-fails-1" data-bs-parent="#fails-accordion-1">
-                      <div class="accordion-body aria-fails"></div>
+                      <div class="accordion-body aria-fails">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -817,9 +828,19 @@
             </div>
           </div>
         </div>
+        <div class="d-flex justify-content-center share_button">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">Export Data</button>
+            <ul class="dropdown-menu" aria-labelledby="exportDropdownButton">
+              <li><a class="dropdown-item" download="" href="" id="exportJson">Export as JSON</a></li>
+              <li><a class="dropdown-item" id="exportHtml">Export as HTML</a></li>
+              <li><a class="dropdown-item" id="copyJson">Copy JSON Data</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </body>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="popup.js"></script>
 </html>

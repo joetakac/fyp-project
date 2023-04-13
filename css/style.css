@@ -43,11 +43,11 @@ nav {
   cursor: pointer;
 }
 
-[ id^="heading-passes-" ] .accordion-button { 
-  color:green;
+[id^="heading-passes-"] .accordion-button {
+  color: green;
 }
-[ id^="heading-fails-" ] .accordion-button {
-  color:red;
+[id^="heading-fails-"] .accordion-button {
+  color: red;
 }
 
 .card {
@@ -62,7 +62,8 @@ nav {
 }
 
 .card-text {
-  margin-bottom: 0;
+  margin: 10px;
+  padding: 10px;
 }
 
 .help {
@@ -70,3 +71,18 @@ nav {
   color: #777;
   margin-top: 10px;
 }
+
+.badge,
+.tag-img {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.share_button {
+  padding: 20px;
+}
+
+.card-footer {
+  padding: 10px;
+}
+

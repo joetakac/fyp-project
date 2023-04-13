@@ -2,6 +2,9 @@ chrome.storage.local.get("axeConfig", function (data) {
   const config = data.axeConfig;
   console.log(data.axeConfig);
 
+  // Get the document URL
+  const documentUrl = window.location.href;
+
   // Inject the axe-core script into the page
   const script = document.createElement("script");
   script.src = chrome.runtime.getURL("/node_modules/axe-core/axe.min.js");
@@ -20,7 +23,12 @@ chrome.storage.local.get("axeConfig", function (data) {
         console.error(err);
       } else {
         console.log(results);
-        chrome.runtime.sendMessage({ action: "sendResults", report: results }); 
+        // Send the results and document URL to the background script
+        chrome.runtime.sendMessage({
+          action: "sendResults",
+          report: results,
+          url: documentUrl,
+        });
       }
     });
   };
